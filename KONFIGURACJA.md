@@ -54,6 +54,7 @@ REACT_APP_API_URL=http://localhost:5000/api
 ## 🗄️ PostgreSQL - Tworzenie Bazy Danych
 
 ### Metoda 1: pgAdmin
+
 1. Otwórz pgAdmin
 2. Kliknij prawym na "Databases"
 3. Wybierz "Create" → "Database"
@@ -61,6 +62,7 @@ REACT_APP_API_URL=http://localhost:5000/api
 5. Kliknij "Save"
 
 ### Metoda 2: Linia Komend
+
 ```bash
 # Zaloguj się do PostgreSQL
 psql -U postgres
@@ -76,6 +78,7 @@ CREATE DATABASE boiska;
 ```
 
 ### Metoda 3: SQL Shell (psql)
+
 ```powershell
 # Otwórz SQL Shell (psql) z menu Start
 # Naciśnij Enter dla domyślnych wartości
@@ -87,12 +90,15 @@ CREATE DATABASE boiska;
 ## 🚀 Pierwsze Uruchomienie
 
 ### 1. Zainstaluj Node.js
+
 Pobierz z https://nodejs.org/ (wersja LTS)
 
 ### 2. Zainstaluj PostgreSQL
+
 Pobierz z https://www.postgresql.org/download/windows/
 
 ### 3. Sklonuj/Pobierz Projekt
+
 ```powershell
 cd C:\Users\Bartek\Desktop\oliwier\projekt
 ```
@@ -100,12 +106,14 @@ cd C:\Users\Bartek\Desktop\oliwier\projekt
 ### 4. Zainstaluj Zależności
 
 **Backend:**
+
 ```powershell
 cd backend
 npm install
 ```
 
 **Frontend:**
+
 ```powershell
 cd ..\frontend
 npm install
@@ -114,6 +122,7 @@ npm install
 ### 5. Konfiguracja
 
 **Backend:**
+
 ```powershell
 cd ..\backend
 copy .env.example .env
@@ -121,17 +130,20 @@ copy .env.example .env
 ```
 
 **Frontend:**
+
 ```powershell
 cd ..\frontend
 copy .env.example .env
 ```
 
 ### 6. Utwórz Bazę Danych
+
 ```powershell
 # W SQL Shell lub pgAdmin utwórz bazę 'boiska'
 ```
 
 ### 7. Uruchom Migracje
+
 ```powershell
 cd ..\backend
 npm run migrate
@@ -141,26 +153,31 @@ npm run seed
 ### 8. Uruchom Aplikację
 
 **Terminal 1 - Backend:**
+
 ```powershell
 cd backend
 npm run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```powershell
 cd frontend
 npm start
 ```
 
 ### 9. Otwórz w Przeglądarce
+
 http://localhost:3000
 
 ## ✅ Weryfikacja
 
 ### Sprawdź Backend:
+
 Otwórz http://localhost:5000/api/health
 
 Powinieneś zobaczyć:
+
 ```json
 {
   "status": "OK",
@@ -169,13 +186,16 @@ Powinieneś zobaczyć:
 ```
 
 ### Sprawdź Połączenie z Bazą:
+
 W konsoli backendu powinieneś zobaczyć:
+
 ```
 Database connected successfully
 Server running on port 5000
 ```
 
 ### Sprawdź Boiska:
+
 Otwórz http://localhost:5000/api/fields
 
 Powinieneś zobaczyć listę 4 boisk.
@@ -183,14 +203,18 @@ Powinieneś zobaczyć listę 4 boisk.
 ## 🐛 Rozwiązywanie Problemów
 
 ### Problem: "Cannot connect to database"
+
 **Rozwiązanie:**
+
 - Sprawdź czy PostgreSQL jest uruchomiony
 - Sprawdź `DATABASE_URL` w `.env`
 - Sprawdź czy baza `boiska` istnieje
 - Sprawdź hasło PostgreSQL
 
 ### Problem: "Port 5000 already in use"
+
 **Rozwiązanie:**
+
 ```powershell
 # Znajdź proces używający portu
 netstat -ano | findstr :5000
@@ -203,14 +227,18 @@ PORT=5001
 ```
 
 ### Problem: "Email not sending"
+
 **Rozwiązanie:**
+
 - Upewnij się że używasz hasła aplikacji (nie zwykłego hasła Gmail)
 - Sprawdź czy weryfikacja dwuetapowa jest włączona
 - Sprawdź `EMAIL_USER` i `EMAIL_PASSWORD` w `.env`
 - Sprawdź czy email nie trafia do SPAM
 
 ### Problem: "npm install" nie działa
+
 **Rozwiązanie:**
+
 ```powershell
 # Wyczyść cache npm
 npm cache clean --force
@@ -224,7 +252,9 @@ npm install
 ```
 
 ### Problem: Frontend nie łączy się z Backend
+
 **Rozwiązanie:**
+
 - Sprawdź czy backend działa na porcie 5000
 - Sprawdź `proxy` w `frontend/package.json`:
   ```json
@@ -239,9 +269,10 @@ npm install
 2. Otwórz SQL Shell lub pgAdmin
 
 3. Wykonaj zapytanie:
+
 ```sql
-UPDATE users 
-SET role = 'admin' 
+UPDATE users
+SET role = 'admin'
 WHERE email = 'twoj_email@example.com';
 ```
 
@@ -254,11 +285,13 @@ WHERE email = 'twoj_email@example.com';
 Po pomyślnej konfiguracji:
 
 1. **Dodaj boiska** (jeśli seed nie zadziałał):
+
    - Zaloguj się jako admin
    - Przejdź do panelu administratora
    - Zakładka "Boiska" → "Dodaj Nowe Boisko"
 
 2. **Utwórz dostępne terminy**:
+
    - Panel administratora → "Kalendarz"
    - "Dodaj Nowe Wydarzenie"
    - Wybierz boisko, datę i godziny
@@ -274,6 +307,7 @@ Po pomyślnej konfiguracji:
 Zobacz szczegółowe instrukcje w `README.md` sekcja "Wdrożenie na Heroku"
 
 Podstawowe kroki:
+
 1. Utwórz konto na Heroku
 2. Zainstaluj Heroku CLI
 3. Wdróż backend z PostgreSQL
@@ -286,6 +320,7 @@ Podstawowe kroki:
 **Powodzenia!** 🚀
 
 Jeśli masz problemy, sprawdź:
+
 - `README.md` - pełna dokumentacja
 - `QUICKSTART.md` - szybki start
 - `PODSUMOWANIE.md` - przegląd funkcji

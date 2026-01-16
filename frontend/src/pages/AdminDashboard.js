@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../config/axios';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { AuthContext } from '../context/AuthContext';

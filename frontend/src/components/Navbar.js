@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -17,21 +17,21 @@ const Navbar = () => {
           </li>
           {user ? (
             <>
-              {user.role === 'admin' && (
+              {user.role === "admin" && (
                 <li>
                   <Link to="/admin">Panel Administratora</Link>
                 </li>
               )}
               <li>
-                <span style={{ color: 'white', padding: '8px 15px' }}>
+                <span style={{ color: "white", padding: "8px 15px" }}>
                   {user.email}
                 </span>
               </li>
               <li>
-                <button 
-                  onClick={logout} 
+                <button
+                  onClick={logout}
                   className="button button-secondary"
-                  style={{ padding: '8px 15px' }}
+                  style={{ padding: "8px 15px" }}
                 >
                   Wyloguj
                 </button>

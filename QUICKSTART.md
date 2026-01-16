@@ -5,12 +5,14 @@
 ### 1. Zainstaluj zależności
 
 **Backend:**
+
 ```powershell
 cd backend
 npm install
 ```
 
 **Frontend:**
+
 ```powershell
 cd frontend
 npm install
@@ -19,12 +21,14 @@ npm install
 ### 2. Konfiguracja Bazy Danych
 
 Skopiuj i edytuj plik konfiguracyjny:
+
 ```powershell
 cd backend
 copy .env.example .env
 ```
 
 Edytuj plik `.env` i ustaw:
+
 ```env
 DATABASE_URL=postgresql://postgres:haslo@localhost:5432/boiska
 JWT_SECRET=jakis_bezpieczny_sekret_min_32_znaki
@@ -39,6 +43,7 @@ FRONTEND_URL=http://localhost:3000
 ### 3. Utwórz bazę danych
 
 W PostgreSQL:
+
 ```sql
 CREATE DATABASE boiska;
 ```
@@ -54,12 +59,14 @@ npm run seed
 ### 5. Uruchom aplikację
 
 **Backend (terminal 1):**
+
 ```powershell
 cd backend
 npm run dev
 ```
 
 **Frontend (terminal 2):**
+
 ```powershell
 cd frontend
 copy .env.example .env
@@ -91,12 +98,14 @@ UPDATE users SET role = 'admin' WHERE email = 'twoj_email@example.com';
 ## 🎮 Funkcje
 
 ### Użytkownicy:
+
 - ✅ Przeglądanie dostępnych boisk
 - ✅ Wybór daty i godziny
 - ✅ Rezerwacja boiska (bez logowania)
 - ✅ Automatyczne powiadomienia email
 
 ### Administratorzy:
+
 - ✅ Panel administracyjny
 - ✅ Zarządzanie boiskami (dodawanie, edycja, usuwanie)
 - ✅ Zarządzanie rezerwacjami (potwierdzanie, anulowanie)
@@ -140,20 +149,24 @@ projekt/
 ## 🔧 Najczęstsze Problemy
 
 ### Błąd połączenia z bazą danych
+
 - Upewnij się, że PostgreSQL jest uruchomiony
 - Sprawdź czy `DATABASE_URL` w `.env` jest poprawny
 
 ### Email nie jest wysyłany
+
 - Sprawdź czy używasz hasła aplikacji Gmail (nie zwykłego hasła)
 - Upewnij się, że weryfikacja dwuetapowa jest włączona
 
 ### Frontend nie widzi API
+
 - Sprawdź czy backend działa na porcie 5000
 - Sprawdź konfigurację proxy w `package.json` frontendu
 
 ## 📝 Przykładowe Dane
 
 Po uruchomieniu `npm run seed` w bazie będą 4 boiska:
+
 1. **Boisko Główne** - pełnowymiarowe, 22 graczy, 200 PLN/h
 2. **Boisko Treningowe** - połowa, 14 graczy, 120 PLN/h
 3. **Orlik** - małe 5x5, 10 graczy, 80 PLN/h
@@ -164,6 +177,7 @@ Po uruchomieniu `npm run seed` w bazie będą 4 boiska:
 Zobacz szczegółowe instrukcje w README.md
 
 Podstawowe kroki:
+
 1. `heroku create nazwa-backend`
 2. `heroku addons:create heroku-postgresql:mini`
 3. Ustaw zmienne środowiskowe
@@ -173,6 +187,7 @@ Podstawowe kroki:
 ## 📞 Wsparcie
 
 Jeśli masz pytania lub problemy, sprawdź:
+
 - README.md - pełna dokumentacja
 - Schemat bazy danych w README.md
 - Lista endpointów API w README.md

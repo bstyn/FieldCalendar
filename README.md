@@ -284,19 +284,37 @@ git push -u origin main
 
 ### Uruchomienie Migracji
 
-1. W panelu backend Web Service, przejdź do "Shell"
+**Metoda 1: Przez Render Dashboard (Najłatwiejsza - Zalecana)**
 
-2. Uruchom migracje:
+1. W panelu Render, przejdź do swojej PostgreSQL Database
+2. Kliknij **"Query"** w górnym menu (obok Connect, Info)
+3. Otwórz plik `backend/migrations/schema.sql` na swoim komputerze
+4. Skopiuj całą zawartość i wklej do Query editora w Render
+5. Kliknij **"Run Query"**
+6. Następnie otwórz plik `backend/migrations/seed.sql`
+7. Skopiuj zawartość i wklej do Query editora
+8. Kliknij **"Run Query"**
+
+**Metoda 2: Przez psql lokalnie (jeśli masz zainstalowany PostgreSQL)**
+
+1. W panelu Render Database, kliknij **"Connect"** → skopiuj "External Database URL"
+2. W terminalu uruchom:
 ```bash
-npm run migrate
-npm run seed
+psql "skopiowany_external_database_url"
+```
+3. W psql uruchom:
+```sql
+\i backend/migrations/schema.sql
+\i backend/migrations/seed.sql
+```
+4. Sprawdź utworzone tabele:
+```sql
+\dt
 ```
 
-Alternatywnie, możesz połączyć się z bazą przez PSQL:
-```bash
-psql -h [host] -U [user] -d [database]
-```
-I uruchomić skrypt SQL ręcznie.
+**Metoda 3: Przez Upload pliku (jeśli Render to wspiera)**
+
+Możesz też skopiować zawartość plików SQL bezpośrednio do Query interface w Render Dashboard.
 
 ### Wdrożenie Frontend
 

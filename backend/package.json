@@ -9,7 +9,11 @@
     "migrate": "node migrations/migrate.js",
     "seed": "node migrations/seed.js"
   },
-  "keywords": ["calendar", "reservation", "api"],
+  "keywords": [
+    "calendar",
+    "reservation",
+    "api"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -7,12 +7,14 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 ### ✅ Funkcjonalności Zaimplementowane
 
 #### 📅 Kalendarz
+
 - Wyświetlanie kalendarza z przejrzystą listą dni, tygodni i miesięcy
 - Możliwość przełączania między różnymi widokami
 - Wyświetlanie zajętych i wolnych terminów
 - Polski interfejs z lokalizacją dat
 
 #### ⚽ Boiska Piłkarskie
+
 - **4 typy boisk:**
   - Pełnowymiarowe (11 na 11)
   - Połowa boiska (7 na 7)
@@ -26,6 +28,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 - Wybór konkretnego boiska przed rezerwacją
 
 #### 📝 Rezerwacje
+
 - Użytkownik może zaznaczyć konkretny termin i zarezerwować boisko
 - **Zbierane informacje:**
   - Imię i nazwisko
@@ -38,30 +41,29 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 - **Automatyczne powiadomienia email** po utworzeniu rezerwacji
 
 #### 🔐 Uwierzytelnianie
+
 - Rejestracja użytkowników
 - Logowanie z JWT
 - Dwa poziomy dostępu: użytkownik i administrator
 
 #### 👨‍💼 Panel Administratora
+
 - **Zarządzanie rezerwacjami:**
   - Przegląd wszystkich rezerwacji
   - Potwierdzanie oczekujących rezerwacji
   - Anulowanie rezerwacji
   - Usuwanie rezerwacji
   - Automatyczne wysyłanie emaili przy zmianie statusu
-  
 - **Zarządzanie boiskami:**
   - Dodawanie nowych boisk
   - Edycja informacji o boisku
   - Dezaktywacja/aktywacja boisk
   - Usuwanie boisk
-  
 - **Zarządzanie kalendarzem:**
   - Tworzenie dostępnych slotów czasowych
   - Blokowanie terminów
   - Tworzenie specjalnych wydarzeń
   - Przypisywanie terminów do konkretnych boisk
-  
 - **Statystyki:**
   - Liczba oczekujących rezerwacji
   - Liczba potwierdzonych rezerwacji
@@ -70,6 +72,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
   - Liczba zarejestrowanych użytkowników
 
 #### 📧 System Email (Darmowy)
+
 - Konfiguracja z Gmail SMTP
 - **Powiadomienia wysyłane:**
   - Potwierdzenie rezerwacji
@@ -80,6 +83,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 ### 🛠️ Technologie Użyte
 
 #### Backend
+
 - **Node.js** + Express.js
 - **PostgreSQL** - baza danych
 - **JWT** - bezpieczne uwierzytelnianie
@@ -88,6 +92,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 - **express-validator** - walidacja danych
 
 #### Frontend
+
 - **React 18** - cały interfejs w języku polskim
 - **React Router** - nawigacja
 - **React Calendar** - komponent kalendarza
@@ -96,6 +101,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 - Responsywny design
 
 #### Deployment
+
 - **Heroku** (darmowy tier)
 - **PostgreSQL addon** (mini - darmowy)
 - **Gmail SMTP** (darmowy)
@@ -103,12 +109,14 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 ### 📊 Struktura Bazy Danych
 
 #### Tabele:
+
 1. **users** - użytkownicy (role: user/admin)
 2. **football_fields** - boiska piłkarskie
 3. **calendar_events** - dostępne terminy
 4. **reservations** - rezerwacje
 
 #### Relacje:
+
 - Rezerwacja → Boisko
 - Rezerwacja → Użytkownik (opcjonalnie)
 - Wydarzenie → Boisko
@@ -117,6 +125,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 ### 🌍 Język Polski
 
 **Cała aplikacja jest w języku polskim:**
+
 - ✅ Interfejs frontend
 - ✅ Komunikaty błędów
 - ✅ Powiadomienia email
@@ -127,6 +136,7 @@ Utworzyłem pełny system rezerwacji boisk piłkarskich z następującymi funkcj
 ### 📁 Pliki Projektu
 
 #### Backend:
+
 ```
 backend/
 ├── config/database.js           # Konfiguracja PostgreSQL
@@ -148,6 +158,7 @@ backend/
 ```
 
 #### Frontend:
+
 ```
 frontend/
 ├── src/
@@ -173,16 +184,19 @@ frontend/
 ### 🚀 Jak Uruchomić
 
 1. **Instalacja:**
+
    ```bash
    cd backend && npm install
    cd ../frontend && npm install
    ```
 
 2. **Konfiguracja:**
+
    - Skopiuj `.env.example` do `.env` w obu folderach
    - Ustaw dane PostgreSQL i Gmail
 
 3. **Baza danych:**
+
    ```bash
    cd backend
    npm run migrate
@@ -190,11 +204,12 @@ frontend/
    ```
 
 4. **Uruchomienie:**
+
    ```bash
    # Terminal 1 - Backend
    cd backend
    npm run dev
-   
+
    # Terminal 2 - Frontend
    cd frontend
    npm start
@@ -233,6 +248,7 @@ frontend/
 ### 📞 Wsparcie
 
 Wszystkie instrukcje są w:
+
 - `README.md` - pełna dokumentacja
 - `QUICKSTART.md` - szybki start
 - Komentarze w kodzie

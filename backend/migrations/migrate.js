@@ -1,4 +1,4 @@
-const db = require('../config/database');
+const db = require("../config/database");
 
 const createTables = async () => {
   try {
@@ -77,9 +77,9 @@ const createTables = async () => {
       CREATE INDEX IF NOT EXISTS idx_reservation_field ON reservations(field_id);
     `);
 
-    console.log('Database tables created successfully');
+    console.log("Database tables created successfully");
   } catch (error) {
-    console.error('Error creating tables:', error);
+    console.error("Error creating tables:", error);
     throw error;
   }
 };
@@ -88,11 +88,11 @@ const createTables = async () => {
 if (require.main === module) {
   createTables()
     .then(() => {
-      console.log('Migration completed');
+      console.log("Migration completed");
       process.exit(0);
     })
-    .catch(err => {
-      console.error('Migration failed:', err);
+    .catch((err) => {
+      console.error("Migration failed:", err);
       process.exit(1);
     });
 }

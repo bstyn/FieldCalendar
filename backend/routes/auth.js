@@ -1,16 +1,19 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
-const db = require('../config/database');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { body, validationResult } = require("express-validator");
+const db = require("../config/database");
 
 // Register
-router.post('/register',
+router.post(
+  "/register",
   [
-    body('name').notEmpty().withMessage('Name is required'),
-    body('email').isEmail().withMessage('Valid email is required'),
-    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
+    body("name").notEmpty().withMessage("Name is required"),
+    body("email").isEmail().withMessage("Valid email is required"),
+    body("password")
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters"),
   ],
   async (req, res) => {
     try {
@@ -22,9 +25,12 @@ router.post('/register',
       const { name, email, password } = req.body;
 
       // Check if user exists
-      const existingUser = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+      const existingUser = await db.query(
+        "SELECT * FROM users WHERE email = $1",
+        [email]
+      );
       if (existingUser.rows.length > 0) {
-        return res.status(400).json({ error: 'User already exists' });
+        return res.status(400).json({ error: "User already exists" });
       }
 
       // Hash password
@@ -32,8 +38,8 @@ router.post('/register',
 
       // Create user
       const result = await db.query(
-        'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role',
-        [name, email, hashedPassword, 'user']
+        "INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role",
+        [name, email, hashedPassword, "user"]
       );
 
       const user = result.rows[0];
@@ -47,17 +53,18 @@ router.post('/register',
 
       res.status(201).json({ token, user });
     } catch (error) {
-      console.error('Register error:', error);
-      res.status(500).json({ error: 'Server error' });
+      console.error("Register error:", error);
+      res.status(500).json({ error: "Server error" });
     }
   }
 );
 
 // Login
-router.post('/login',
+router.post(
+  "/login",
   [
-    body('email').isEmail().withMessage('Valid email is required'),
-    body('password').notEmpty().withMessage('Password is required')
+    body("email").isEmail().withMessage("Valid email is required"),
+    body("password").notEmpty().withMessage("Password is required"),
   ],
   async (req, res) => {
     try {
@@ -69,9 +76,11 @@ router.post('/login',
       const { email, password } = req.body;
 
       // Find user
-      const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+      const result = await db.query("SELECT * FROM users WHERE email = $1", [
+        email,
+      ]);
       if (result.rows.length === 0) {
-        return res.status(401).json({ error: 'Invalid credentials' });
+        return res.status(401).json({ error: "Invalid credentials" });
       }
 
       const user = result.rows[0];
@@ -79,7 +88,7 @@ router.post('/login',
       // Check password
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res.status(401).json({ error: 'Invalid credentials' });
+        return res.status(401).json({ error: "Invalid credentials" });
       }
 
       // Create token
@@ -95,12 +104,12 @@ router.post('/login',
           id: user.id,
           name: user.name,
           email: user.email,
-          role: user.role
-        }
+          role: user.role,
+        },
       });
     } catch (error) {
-      console.error('Login error:', error);
-      res.status(500).json({ error: 'Server error' });
+      console.error("Login error:", error);
+      res.status(500).json({ error: "Server error" });
     }
   }
 );
