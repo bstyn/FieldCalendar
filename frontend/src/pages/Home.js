@@ -174,7 +174,15 @@ const Home = () => {
               ) : (
                 <div>
                   <p>Dostępne godziny:</p>
-                  <ul style={{ listStyle: "none", padding: 0 }}>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      maxHeight: "500px",
+                      overflowY: "auto",
+                      marginBottom: "20px",
+                    }}
+                  >
                     {events.map((event) => (
                       <li
                         key={event.id}
@@ -203,7 +211,7 @@ const Home = () => {
                   <button
                     className="button button-primary"
                     onClick={() => setShowReservationForm(true)}
-                    style={{ marginTop: "20px", width: "100%" }}
+                    style={{ width: "100%" }}
                   >
                     Zarezerwuj Boisko
                   </button>
